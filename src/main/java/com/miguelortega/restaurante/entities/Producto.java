@@ -10,10 +10,14 @@ public class Producto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_producto")
     private Long id;
     private String nombre;
     private double precio;
-    private String categoria;
+
+    @OneToOne
+    @JoinColumn(name = "id_categoria")
+    private Categoria categoria;
     private String descripcion;
 
     public Long getId() {
@@ -40,11 +44,11 @@ public class Producto implements Serializable {
         this.precio = precio;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
